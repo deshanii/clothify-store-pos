@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
+   <children>
+      <Label layoutX="368.0" layoutY="63.0" prefHeight="46.0" prefWidth="146.0" text="LOGIN" textFill="#df0974">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtEmail" layoutX="377.0" layoutY="159.0" prefHeight="26.0" prefWidth="167.0" promptText="Email" />
+      <JFXTextField fx:id="txtPassword" layoutX="377.0" layoutY="226.0" prefHeight="26.0" prefWidth="167.0" promptText="Password" />
+      <CubicCurve controlX1="-26.800033569335938" controlX2="416.0906982421875" controlY1="30.5999755859375" controlY2="23.408172607421875" endX="-145.4219207763672" endY="-384.4585876464844" layoutX="148.0" layoutY="289.0" startX="-236.60157775878906" startY="-290.05859375" strokeWidth="10.0">
+         <fill>
+            <LinearGradient endX="0.8409090904575406" endY="1.0" startY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8941176533699036" green="0.12156862765550613" blue="0.239215686917305" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.7789473533630371" green="0.2336842119693756" blue="0.6244561672210693" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8941176533699036" green="0.12156862765550613" blue="0.239215686917305" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9894737005233765" green="0.9528264999389648" blue="0.9717608690261841" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </CubicCurve>
+      <CubicCurve controlX1="30.0" controlX2="-14.0" controlY1="134.39999389648438" controlY2="-70.4000244140625" endX="-20.4000244140625" endY="-93.60000610351562" layoutX="300.0" layoutY="58.0" startX="-156.40000915527344" startY="-63.200016021728516" strokeWidth="5.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8941176533699036" green="0.12156862765550613" blue="0.239215686917305" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.8705882430076599" green="0.501960813999176" blue="0.9058823585510254" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8941176533699036" green="0.12156862765550613" blue="0.239215686917305" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9894737005233765" green="0.9528264999389648" blue="0.9717608690261841" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </CubicCurve>
+      <CubicCurve controlX1="-50.0" controlX2="134.99844360351562" controlY1="-100.0" controlY2="186.94140625" endX="-343.50933837890625" endY="-87.59588623046875" layoutX="166.0" layoutY="356.0" startX="-274.6015625" startY="-179.45858764648438" strokeWidth="5.0">
+         <fill>
+            <LinearGradient endX="0.034090922637419196" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8947368264198303" green="0.05302144214510918" blue="0.16525016725063324" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9578947424888611" green="0.3263937532901764" blue="0.8000195026397705" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8941176533699036" green="0.12156862765550613" blue="0.239215686917305" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9637582898139954" green="0.9217934012413025" blue="0.9684210419654846" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </CubicCurve>
+      <Line endX="-21.28778076171875" endY="228.80413818359375" layoutX="349.0" layoutY="150.0" startX="-21.28778076171875" startY="-103.19587707519531" />
+      <Button fx:id="btnLogin" layoutX="409.0" layoutY="298.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="26.0" prefWidth="113.0" text="LOGIN">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="364.0" fitWidth="310.0" layoutX="14.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../img/clothify-logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <CubicCurve controlX1="-50.0" controlX2="-97.22190856933594" controlY1="-100.0" controlY2="81.74139404296875" endX="-349.20159912109375" endY="-155.05859375" layoutX="215.0" layoutY="282.0" startX="-301.20159912109375" startY="-188.65859985351562" strokeWidth="5.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9578947424888611" blue="0.15964911878108978" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.7202339172363281" green="0.3059649169445038" blue="0.75789475440979" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8941176533699036" green="0.12156862765550613" blue="0.239215686917305" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9637582898139954" green="0.9217934012413025" blue="0.9684210419654846" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </CubicCurve>
+      <CubicCurve controlX1="-27.821868896484375" controlX2="-14.0" controlY1="95.20000457763672" controlY2="-70.4000244140625" endX="-20.4000244140625" endY="-93.60000610351562" layoutX="416.0" layoutY="19.0" startX="-156.40000915527344" startY="-63.200016021728516" strokeWidth="5.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8941176533699036" green="0.12156862765550613" blue="0.239215686917305" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.8705882430076599" green="0.501960813999176" blue="0.9058823585510254" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8941176533699036" green="0.12156862765550613" blue="0.239215686917305" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9894737005233765" green="0.9528264999389648" blue="0.9717608690261841" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </CubicCurve>
+   </children>
+</AnchorPane>
