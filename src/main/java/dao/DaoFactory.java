@@ -18,7 +18,7 @@ public class DaoFactory {
 
     public <T extends SuperDao>T getDaoType(util.DaoType type){
         switch (type){
-           // case ITEM : return (T)new ItemDaoImpl();
+            case ITEM : return (T)new ItemDaoImpl();
             case EMPLOYEE:return (T) new EmployeeDaoImpl();
             case SUPPLIER:return (T) new SupplierDaoImpl();
            // case ORDER:return (T) new OrderDaoImpl();

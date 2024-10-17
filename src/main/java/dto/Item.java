@@ -12,7 +12,7 @@ public class Item {
     private String supplierID;
     private String description;
     private String packSize;
-    private Double unitPrice;
-    private Integer qtyOnHand;
+    private String unitPrice;
+    private String qtyOnHand;
 
 }

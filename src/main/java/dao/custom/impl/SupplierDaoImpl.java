@@ -13,11 +13,10 @@ public class SupplierDaoImpl implements SupplierDao {
     public boolean add(SupplierEntity supplierEntity) {
         Session session = HibernateUtil.getSession();
         session.getTransaction().begin();
-        //EmployeeEntity employeeEntity = new EmployeeEntity(employee.getEmpID(), employee.getTitle(), employee.getName(), employee.getAddress(), employee.getDob(), employee.getContactNumber(), employee.getBankAccNo(), employee.getNic());
-
         session.persist(supplierEntity);
         session.getTransaction().commit();
         session.close();
+
         return true;
     }
 
@@ -62,11 +61,11 @@ public class SupplierDaoImpl implements SupplierDao {
         Session session = HibernateUtil.getSession();
         session.getTransaction().begin();
 
-        Query query = session.createQuery("FROM employee WHERE name=:name");
+        Query query = session.createQuery("FROM supplier WHERE name=:name");
         query.setParameter("name", name);
 
-        SupplierEntity supplier = (SupplierEntity) query.uniqueResult();
+        SupplierEntity supplierEntity = (SupplierEntity) query.uniqueResult();
         session.close();
-        return supplier;
+        return supplierEntity;
     }
 }

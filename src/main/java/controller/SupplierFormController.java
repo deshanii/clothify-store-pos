@@ -10,20 +10,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import service.custom.SupplierService;
 import service.custom.impl.SupplierServiceImpl;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SupplierFormController implements Initializable {
-    public AnchorPane LoadFormContent;
+
     @FXML
     private Button btnAdd;
 
@@ -61,7 +64,7 @@ public class SupplierFormController implements Initializable {
     private TableColumn<?, ?> colTitle;
 
     @FXML
-    private TableView<SupplierEntity> tblSuppliers;
+    private TableView<Supplier> tblSuppliers;
 
     @FXML
     private JFXTextField txtCompanyName;
@@ -107,25 +110,24 @@ public class SupplierFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR, "Error: " + e.getMessage()).show();
         }
 
+        clearText();
+
     }
 
     @FXML
     void btnBackOnAction(ActionEvent event) {
+        try {
+            Stage stage = new Stage();
+            stage.setScene(new Scene(
+                    FXMLLoader.load(getClass().getResource("../../resources/view/dash_board_form.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
-//        URL resource = this.getClass().getResource("view/dash_board_form.fxml");
-//
-//        assert resource != null;
-//
-//
-//        Parent load = (Parent) FXMLLoader.load(resource);
-//        this.LoadFormContent.getChildren().clear();
-//        this.LoadFormContent.getChildren().add(load);
     }
 
-
-    @FXML
-    void btnClearOnAction(ActionEvent event) {
-
+    public void clearText(){
         txtSupID.setText("");
         txtEmail.setText("");
         txtSupID.setText("");
@@ -133,6 +135,12 @@ public class SupplierFormController implements Initializable {
         txtContactNumber.setText("");
         txtCompanyName.setText("");
         txtName.setText("");
+    }
+
+    @FXML
+    void btnClearOnAction(ActionEvent event) {
+
+        clearText();
 
     }
 
@@ -160,6 +168,22 @@ public class SupplierFormController implements Initializable {
 
     }
 
+
+    @FXML
+    void txtSearchOnAction(ActionEvent event) {
+        try {
+            Supplier supplier = supplierService.findSupplier(txtSearch.getText());
+            if (supplier != null) {
+                setValues(supplier);
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Supplier not found").showAndWait();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
        colSupID.setCellValueFactory(new PropertyValueFactory<>("supplierID"));
@@ -175,12 +199,12 @@ public class SupplierFormController implements Initializable {
 
         tblSuppliers.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue)->{
             if(null != newValue){
-                setValues(newValue);
+                setValues( newValue);
             }
         });
     }
 
-    private void setValues(SupplierEntity newValue){
+    private void setValues(Supplier newValue){
         txtSupID.setText(newValue.getSupplierID());
         cmbTitle.getSelectionModel().select(newValue.getTitle());
         txtName.setText(newValue.getName());
@@ -190,6 +214,9 @@ public class SupplierFormController implements Initializable {
     }
 
     public void loadTable(){
-        tblSuppliers.setItems(FXCollections.observableList(supplierService.getSupplier()));
+
+        tblSuppliers.setItems(FXCollections.observableArrayList(supplierService.getSupplier()));
     }
 }
+
+

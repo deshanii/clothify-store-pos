@@ -19,14 +19,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         EmployeeDao employeeDao = DaoFactory.getDaoFactory().getDaoType(DaoType.EMPLOYEE);
         EmployeeEntity userEntity = new ObjectMapper().convertValue(employee, EmployeeEntity.class);
         return employeeDao.add(userEntity);
-        //return true;
     }
 
     @Override
     public boolean deleteEmployee(String text) {
         EmployeeDao employeeDao = DaoFactory.getDaoFactory().getDaoType(DaoType.EMPLOYEE);
         return employeeDao.delete(text);
-        //return true;
     }
 
     @Override
@@ -36,7 +34,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         return employeeDao.update(employeeEntity);
 
-        //return false;
+
     }
 
     @Override
@@ -45,6 +43,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         EmployeeEntity employeeEntity = employeeDao.find(id);
 
         return new ObjectMapper().convertValue(employeeEntity,Employee.class);
+
     }
 
     @Override

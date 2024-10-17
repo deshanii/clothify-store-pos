@@ -5,8 +5,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Getter
-@Setter
+@Data
+
 public class Supplier {
     private String supplierID;
     private String title;

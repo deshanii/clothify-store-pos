@@ -1,7 +1,7 @@
 package service.custom;
 
 import dto.Employee;
-import entity.EmployeeEntity;
+
 
 import java.util.List;
 
@@ -12,6 +12,5 @@ public interface EmployeeService {
     boolean updateEmployee(Employee employee);
     Employee findEmployee(String id);
 
-
-    List<EmployeeEntity> getEmployee();
+    List<Employee> getEmployee();
 }

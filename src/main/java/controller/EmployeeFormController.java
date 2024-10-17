@@ -3,7 +3,6 @@ package controller;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import dto.Employee;
-import entity.EmployeeEntity;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -74,7 +73,7 @@ public class EmployeeFormController implements Initializable {
     private Rectangle empID;
 
     @FXML
-    private TableView<EmployeeEntity> tblEmployee;
+    private TableView<Employee> tblEmployee;
 
     @FXML
     private JFXTextField txtAccNo;
@@ -125,7 +124,7 @@ final EmployeeService employeeservice = new EmployeeServiceImpl();
 
     }
 
-    private void setTextValues(EmployeeEntity newValue) {
+    private void setTextValues(Employee newValue) {
         txtEmpID.setText(newValue.getEmpID());
         cmbTitle.getSelectionModel().select(newValue.getTitle());
         txtName.setText(newValue.getName());
@@ -138,7 +137,7 @@ final EmployeeService employeeservice = new EmployeeServiceImpl();
     }
 
     public void loadTable(){
-tblEmployee.setItems(FXCollections.observableList(employeeservice.getEmployee()));
+tblEmployee.setItems(FXCollections.observableArrayList(employeeservice.getEmployee()));
 
     }
 
@@ -171,13 +170,14 @@ tblEmployee.setItems(FXCollections.observableList(employeeservice.getEmployee())
             new Alert(Alert.AlertType.ERROR, "Error: " + e.getMessage()).show();
         }
 
+        clearText();
     }
 
 
 
     @FXML
     void btnBackOnAction(ActionEvent event) throws IOException {
-        URL resource = this.getClass().getResource("view/dash_board_form.fxml");
+        URL resource = this.getClass().getResource("../../view/dash_board_form.fxml");
 
         assert resource != null;
 
@@ -185,9 +185,8 @@ tblEmployee.setItems(FXCollections.observableList(employeeservice.getEmployee())
         this.LoadFormContent.getChildren().clear();
         this.LoadFormContent.getChildren().add(load);
     }
-    @FXML
-    void btnClearOnAction(ActionEvent event) {
 
+    public void clearText(){
         txtEmpID.setText("");
         cmbTitle.setValue(null);
         txtName.setText("");
@@ -196,6 +195,12 @@ tblEmployee.setItems(FXCollections.observableList(employeeservice.getEmployee())
         txtContactNumber.setText("");
         txtAccNo.setText("");
         txtNIC.setText("");
+    }
+
+    @FXML
+    void btnClearOnAction(ActionEvent event) {
+
+       clearText();
 
     }
 
@@ -217,6 +222,7 @@ tblEmployee.setItems(FXCollections.observableList(employeeservice.getEmployee())
         }
 
     }
+
 @FXML
   void btnUpdateOnAction(ActionEvent event) {
 
@@ -243,19 +249,21 @@ tblEmployee.setItems(FXCollections.observableList(employeeservice.getEmployee())
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
+
 @FXML
    void txtSearchOnAction(ActionEvent event) {
 
-//    try {
-//        Employee employee = employeeservice.findEmployee(txtEmpID.getText());
-//        if (employee != null) {
-//            setTextValues(employee);
-//        } else {
-//            System.out.println(employee);
-//            new Alert(Alert.AlertType.ERROR, "Employee not found").show();
-//        }
-//    } catch (Exception e) {
-//        e.printStackTrace();
+    try {
+        Employee employee = employeeservice.findEmployee(txtSearch.getText());
+        if (employee != null) {
+            setTextValues(employee);
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Employee not found").show();
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
     }
 
   }

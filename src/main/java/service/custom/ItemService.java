@@ -1,8 +1,7 @@
 package service.custom;
 
-
 import dto.Item;
-import entity.ItemEntity;
+
 import java.util.List;
 
 public interface ItemService {
@@ -11,6 +10,5 @@ public interface ItemService {
     boolean updateItem(Item item);
     Item findItem(String id);
 
-
-    List<ItemEntity> getItem();
+    List<Item> getItem();
 }

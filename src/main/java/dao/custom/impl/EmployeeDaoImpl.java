@@ -64,9 +64,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
         Query query = session.createQuery("FROM employee WHERE id=:id");
         query.setParameter("id", id);
 
-        EmployeeEntity employee = (EmployeeEntity) query.uniqueResult();
+        EmployeeEntity employeeEntity = (EmployeeEntity) query.uniqueResult();
         session.close();
-        return employee;
+        return employeeEntity;
     }
 
     @Override
