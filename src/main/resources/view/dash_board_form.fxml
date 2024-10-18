@@ -37,22 +37,22 @@
       </Button>
       <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="156.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/Office%20Worker%20in%20a%20Suit%20Female.png" />
+            <Image url="@../img/OfficeWorkerinaSuitFemale.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="38.0" fitWidth="36.0" layoutX="156.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/New%20Product.png" />
+            <Image url="@../img/NewProduct.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="160.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/Supplier%20(1).png" />
+            <Image url="@../img/Supplier(1).png" />
          </image>
       </ImageView>
       <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="165.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/Purchase%20Order.png" />
+            <Image url="@../img/PurchaseOrder.png" />
          </image>
       </ImageView>
    </children>

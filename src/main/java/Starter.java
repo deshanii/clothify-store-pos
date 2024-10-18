@@ -20,6 +20,9 @@ public class Starter extends Application {
       //  stage.setScene(new Scene(FXMLLoader.load((getClass().getResource("view/add_items_form.fxml")))));
       //  stage.show();
 
+        //  stage.setScene(new Scene(FXMLLoader.load((getClass().getResource("view/order_form.fxml")))));
+        //  stage.show();
+
         stage.setScene(new Scene(FXMLLoader.load((getClass().getResource("view/dash_board_form.fxml")))));
         stage.show();
 
