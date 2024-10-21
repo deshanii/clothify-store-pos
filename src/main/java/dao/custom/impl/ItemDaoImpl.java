@@ -21,8 +21,13 @@ public class ItemDaoImpl implements ItemDao {
 
 
     @Override
-    public boolean update(ItemEntity itemEntity) {
-        return false;
+    public boolean update(ItemEntity item) {
+        Session session=HibernateUtil.getSession();
+        session.beginTransaction();
+        session.merge(item.getItemCode(),item);
+        session.getTransaction().commit();
+
+        return true;
     }
 
 

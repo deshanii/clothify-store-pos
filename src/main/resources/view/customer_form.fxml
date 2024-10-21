@@ -41,7 +41,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Rectangle fx:id="empID" arcHeight="30.0" arcWidth="30.0" fill="#a4a4a478" height="403.0" layoutX="8.0" layoutY="85.0" stroke="#fc33de" strokeType="INSIDE" width="757.0" />
+                  <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#a4a4a478" height="403.0" layoutX="8.0" layoutY="85.0" stroke="#fc33de" strokeType="INSIDE" width="757.0" />
                   <Label layoutX="66.0" layoutY="22.0" prefHeight="27.0" prefWidth="147.0" text="Customer">
                      <font>
                         <Font name="System Bold" size="23.0" />

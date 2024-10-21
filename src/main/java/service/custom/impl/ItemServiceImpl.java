@@ -2,8 +2,10 @@ package service.custom.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dao.DaoFactory;
+import dao.custom.EmployeeDao;
 import dao.custom.ItemDao;
 import dto.Item;
+import entity.EmployeeEntity;
 import entity.ItemEntity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,7 +31,10 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public boolean updateItem(Item item) {
-        return false;
+        ItemDao itemDao = DaoFactory.getDaoFactory().getDaoType(DaoType.ITEM);
+        ItemEntity itemEntity = new ObjectMapper().convertValue(item, ItemEntity.class);
+
+        return itemDao.update(itemEntity);
     }
 
 

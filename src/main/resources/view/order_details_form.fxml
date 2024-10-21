@@ -42,9 +42,9 @@
                   <Font name="System Bold" size="21.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="txtItemCode" layoutX="66.0" layoutY="135.0" promptText="Order ID" />
-            <JFXTextField fx:id="txtDescription" layoutX="529.0" layoutY="128.0" promptText="Description" text="Customer ID" />
-            <TableView fx:id="tblAddItems" layoutX="66.0" layoutY="249.0" prefHeight="218.0" prefWidth="646.0">
+            <JFXTextField fx:id="txtOrderID" layoutX="66.0" layoutY="135.0" promptText="Order ID" />
+            <JFXTextField fx:id="txtCustID" layoutX="529.0" layoutY="128.0" promptText="Description" text="Customer ID" />
+            <TableView fx:id="tblOrderDetails" layoutX="66.0" layoutY="249.0" prefHeight="218.0" prefWidth="646.0">
                <columns>
                   <TableColumn fx:id="colItemCode" prefWidth="225.60003662109375" text="Order ID" />
                   <TableColumn fx:id="colSupID" prefWidth="217.5999755859375" text="Order Date" />
@@ -52,7 +52,7 @@
                </columns>
             </TableView>
             <JFXTextField fx:id="txtSearch" layoutX="583.0" layoutY="45.0" onAction="#txtSearchOnAction" promptText="Search" />
-            <JFXTextField fx:id="txtSupID" layoutX="303.0" layoutY="131.0" promptText="Supplier ID" text="Order Date" />
+            <JFXTextField fx:id="txtOrderdate" layoutX="303.0" layoutY="131.0" promptText="Supplier ID" text="Order Date" />
             <Button fx:id="btnAdd" layoutX="333.0" layoutY="197.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #6eeb34;" text="Add">
                <font>
                   <Font name="System Bold" size="12.0" />

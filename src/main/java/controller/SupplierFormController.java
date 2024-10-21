@@ -2,6 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import dto.Customer;
 import dto.Supplier;
 import entity.SupplierEntity;
 import javafx.collections.FXCollections;
@@ -165,8 +166,28 @@ public class SupplierFormController implements Initializable {
 
     @FXML
     void btnEditOnAction(ActionEvent event) {
+        Supplier supplier=new Supplier(
+                txtSupID.getText(),
+                cmbTitle.getSelectionModel().getSelectedItem().toString(),
+                txtName.getText(),
+                txtContactNumber.getText(),
+                txtCompanyName.getText(),
+                txtEmail.getText()
+        );
 
-    }
+        try {
+            boolean isUpdate = supplierService.updateSupplier(supplier);
+            if(isUpdate){
+                new Alert(Alert.AlertType.INFORMATION,"Supplier Updated Successfully !").show();
+                loadTable();
+            }else {
+                new Alert(Alert.AlertType.ERROR,"Something went wrong !").show();
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+}
 
 
     @FXML

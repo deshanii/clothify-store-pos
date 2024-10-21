@@ -1,6 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.JFXTextField;
+import dto.Customer;
 import dto.Item;
 import dto.Supplier;
 import javafx.collections.FXCollections;
@@ -171,6 +172,26 @@ public class AddItemsFormController implements Initializable {
 
     @FXML
     void btnEditOnAction(ActionEvent event) {
+        Item item=new Item(
+                txtItemCode.getText(),
+                txtSupID.getText(),
+                txtDescription.getText(),
+                txtPackSize.getText(),
+                txtUnitPrice.getText(),
+                txtQtyOnHand.getText()
+        );
+
+        try {
+            boolean isUpdate = itemService.updateItem(item);
+            if(isUpdate){
+                new Alert(Alert.AlertType.INFORMATION,"Item Updated Successfully !").show();
+                loadTable();
+            }else {
+                new Alert(Alert.AlertType.ERROR,"Something went wrong !").show();
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
 
     }
 

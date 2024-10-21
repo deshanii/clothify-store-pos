@@ -3,11 +3,15 @@ package controller;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class OrderDetailsFormController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class OrderDetailsFormController implements Initializable {
 
     @FXML
     private Button btnAdd;
@@ -34,19 +38,34 @@ public class OrderDetailsFormController {
     private TableColumn<?, ?> colSupID;
 
     @FXML
-    private TableView<?> tblAddItems;
+    private TableView<?> tblOrderDetails;
 
     @FXML
-    private JFXTextField txtDescription;
+    private JFXTextField txtCustID;
 
     @FXML
-    private JFXTextField txtItemCode;
+    private JFXTextField txtOrderID;
+
+    @FXML
+    private JFXTextField txtOrderdate;
 
     @FXML
     private JFXTextField txtSearch;
 
-    @FXML
-    private JFXTextField txtSupID;
+
+    public void loadTable(){
+
+    }
+
+    public void setValues(){
+
+    }
+
+    public void clearText(){
+        txtOrderdate.setText("");
+        txtOrderID.setText("");
+        txtCustID.setText("");
+    }
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
@@ -61,6 +80,7 @@ public class OrderDetailsFormController {
     @FXML
     void btnClearOnAction(ActionEvent event) {
 
+        clearText();
     }
 
     @FXML
@@ -78,4 +98,8 @@ public class OrderDetailsFormController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }

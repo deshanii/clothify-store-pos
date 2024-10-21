@@ -2,8 +2,10 @@ package service.custom.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dao.DaoFactory;
+import dao.custom.CustomerDao;
 import dao.custom.SupplierDao;
 import dto.Supplier;
+import entity.CustomerEntity;
 import entity.SupplierEntity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,7 +33,10 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public boolean updateSupplier(Supplier supplier) {
-        return false;
+        SupplierDao supplierDao = DaoFactory.getDaoFactory().getDaoType(DaoType.SUPPLIER);
+        SupplierEntity supplierEntity = new ObjectMapper().convertValue(supplier, SupplierEntity.class);
+
+        return supplierDao.update(supplierEntity);
     }
 
 
