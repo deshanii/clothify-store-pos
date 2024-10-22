@@ -1,6 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.JFXTextField;
+import dto.OrderDetails;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,16 +30,17 @@ public class OrderDetailsFormController implements Initializable {
     private Button btnEdit;
 
     @FXML
-    private TableColumn<?, ?> colDescription;
+    private TableColumn<?, ?> colCustomerID;
 
     @FXML
-    private TableColumn<?, ?> colItemCode;
+    private TableColumn<?, ?> colOrderID;
+
 
     @FXML
-    private TableColumn<?, ?> colSupID;
+    private TableColumn<?, ?> colOrerDate;
 
     @FXML
-    private TableView<?> tblOrderDetails;
+    private TableView<OrderDetails> tblOrderDetails;
 
     @FXML
     private JFXTextField txtCustID;
@@ -51,6 +53,7 @@ public class OrderDetailsFormController implements Initializable {
 
     @FXML
     private JFXTextField txtSearch;
+
 
 
     public void loadTable(){

@@ -46,9 +46,9 @@
             <JFXTextField fx:id="txtCustID" layoutX="529.0" layoutY="128.0" promptText="Description" text="Customer ID" />
             <TableView fx:id="tblOrderDetails" layoutX="66.0" layoutY="249.0" prefHeight="218.0" prefWidth="646.0">
                <columns>
-                  <TableColumn fx:id="colItemCode" prefWidth="225.60003662109375" text="Order ID" />
-                  <TableColumn fx:id="colSupID" prefWidth="217.5999755859375" text="Order Date" />
-                  <TableColumn fx:id="colDescription" prefWidth="203.20001220703125" text="Customer ID" />
+                  <TableColumn fx:id="colOrderID" prefWidth="225.60003662109375" text="Order ID" />
+                  <TableColumn fx:id="colOrerDate" prefWidth="217.5999755859375" text="Order Date" />
+                  <TableColumn fx:id="colCustomerID" prefWidth="203.20001220703125" text="Customer ID" />
                </columns>
             </TableView>
             <JFXTextField fx:id="txtSearch" layoutX="583.0" layoutY="45.0" onAction="#txtSearchOnAction" promptText="Search" />
