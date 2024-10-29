@@ -8,7 +8,7 @@ import lombok.*;
 @Data
 public class OrderDetails {
     private String orderID;
-    private String oredrDate;
+    private String orderDate;
     private String custID;
 
 }

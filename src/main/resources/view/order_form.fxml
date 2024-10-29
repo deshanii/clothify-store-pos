@@ -45,23 +45,22 @@
                </font>
             </Label>
             <JFXTextField fx:id="txtOrderID" layoutX="69.0" layoutY="156.0" promptText="Order ID" />
-            <JFXTextField fx:id="txtCustomerName" layoutX="609.0" layoutY="156.0" promptText="Customer Name" />
             <JFXTextField fx:id="txtDescription" layoutX="73.0" layoutY="211.0" promptText="Description" />
-            <JFXTextField fx:id="txtUnitPrice" layoutX="274.0" layoutY="211.0" promptText="Unit Price" />
-            <TableView fx:id="tblSuppliers" layoutX="66.0" layoutY="303.0" prefHeight="241.0" prefWidth="722.0">
+            <JFXTextField fx:id="txtUnitPrice" layoutX="381.0" layoutY="211.0" promptText="Unit Price" />
+            <TableView fx:id="tblOrders" layoutX="66.0" layoutY="303.0" prefHeight="241.0" prefWidth="722.0">
                <columns>
-                  <TableColumn fx:id="colSupID" prefWidth="92.00003051757812" text="Order ID" />
-                  <TableColumn fx:id="colTitle" prefWidth="92.00003051757812" text="Customer ID" />
-                  <TableColumn fx:id="colName" prefWidth="92.00003051757812" text="Item code" />
-                  <TableColumn fx:id="colContactNumber" prefWidth="128.79998779296875" text="Description" />
-                  <TableColumn fx:id="colCompanyName" prefWidth="125.5999755859375" text="Unit Price" />
-                  <TableColumn fx:id="colEmail" prefWidth="95.199951171875" text="Qty" />
-                  <TableColumn fx:id="colEmail1" prefWidth="93.60009765625" text="Total" />
+                  <TableColumn fx:id="colOrderID" prefWidth="92.00003051757812" text="Order ID" />
+                  <TableColumn fx:id="colCustID" prefWidth="92.00003051757812" text="Customer ID" />
+                  <TableColumn fx:id="colItemCode" prefWidth="92.00003051757812" text="Item code" />
+                  <TableColumn fx:id="colDescription" prefWidth="128.79998779296875" text="Description" />
+                  <TableColumn fx:id="colUnitPrice" prefWidth="125.5999755859375" text="Unit Price" />
+                  <TableColumn fx:id="colQty" prefWidth="95.199951171875" text="Qty" />
+                  <TableColumn fx:id="colTotal" prefWidth="93.60009765625" text="Total" />
                </columns>
             </TableView>
-            <JFXTextField fx:id="txtSearch" layoutX="678.0" layoutY="101.0" promptText=" Search" />
-            <JFXComboBox fx:id="cmbCustomerID" layoutX="270.0" layoutY="156.0" promptText="Customer ID" />
-            <Label layoutX="528.0" layoutY="24.0" prefHeight="26.0" prefWidth="147.0" text="Order Date">
+            <JFXTextField fx:id="txtSearch" layoutX="678.0" layoutY="101.0" onAction="#txtSearchOnAction" promptText=" Search" />
+            <JFXComboBox fx:id="cmbCustomerID" layoutX="389.0" layoutY="156.0" promptText="Customer ID" />
+            <Label layoutX="510.0" layoutY="24.0" prefHeight="26.0" prefWidth="147.0" text="Order Date">
                <font>
                   <Font size="15.0" />
                </font>
@@ -72,19 +71,18 @@
                </font>
             </Label>
             <Line endX="0.4000244140625" endY="17.399993896484375" layoutX="666.0" layoutY="63.0" startX="0.4000244140625" startY="-37.79999923706055" />
-            <Label fx:id="lblDate" layoutX="528.0" layoutY="50.0" prefHeight="26.0" prefWidth="118.0" text="2024-10-17">
+            <Label fx:id="lblDate" layoutX="511.0" layoutY="50.0" prefHeight="26.0" prefWidth="135.0" text="2024-10-17">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold" size="21.0" />
                </font>
             </Label>
             <Label fx:id="lblTime" layoutX="705.0" layoutY="50.0" prefHeight="26.0" prefWidth="118.0" text="14 : 40 : 00">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold" size="21.0" />
                </font>
             </Label>
-            <JFXComboBox fx:id="cmbItemCode" layoutX="447.0" layoutY="157.0" promptText="Item Code" />
-            <JFXTextField fx:id="txtQty" layoutX="460.0" layoutY="211.0" prefHeight="26.0" prefWidth="87.0" promptText="Qty" />
-            <JFXTextField fx:id="txtStock" layoutX="619.0" layoutY="211.0" prefHeight="26.0" prefWidth="129.0" promptText="Qty" text="Stock" />
+            <JFXComboBox fx:id="cmbItemCode" layoutX="667.0" layoutY="157.0" promptText="Item Code" />
+            <JFXTextField fx:id="txtQty" layoutX="677.0" layoutY="211.0" prefHeight="26.0" prefWidth="87.0" promptText="Qty" />
             <Label fx:id="lblNetTotal" layoutX="33.0" layoutY="574.0" prefHeight="26.0" prefWidth="77.0" text="Net Total :">
                <font>
                   <Font name="System Bold" size="15.0" />

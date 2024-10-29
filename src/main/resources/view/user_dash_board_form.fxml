@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="467.0" prefWidth="457.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserDashBoardFormController">
+   <children>
+      <ImageView fitHeight="685.0" fitWidth="556.0" layoutX="-3.0" layoutY="-148.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/clothifybackground.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b596af8f" height="421.0" layoutX="99.0" layoutY="61.0" stroke="BLACK" strokeType="INSIDE" width="339.0" />
+      <Button fx:id="btnEmployee" layoutX="140.0" layoutY="89.0" mnemonicParsing="false" onAction="#btnEmployeeOnAction" prefHeight="38.0" prefWidth="243.0" style="-fx-background-color: #000000;" text="Manage Employee" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnItem" layoutX="142.0" layoutY="154.0" mnemonicParsing="false" onAction="#btnItemOnAction" prefHeight="38.0" prefWidth="243.0" style="-fx-background-color: #000000;" text="Manage Stock" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnSupplier" layoutX="142.0" layoutY="218.0" mnemonicParsing="false" onAction="#btnSupplierOnAction" prefHeight="38.0" prefWidth="243.0" style="-fx-background-color: #000000;" text="Manage Supplier" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="143.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnOrderOnAction" prefHeight="38.0" prefWidth="243.0" style="-fx-background-color: #000000;" text="Manage Order Details" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="146.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/OfficeWorkerinaSuitFemale.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="38.0" fitWidth="36.0" layoutX="149.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/NewProduct.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="156.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Supplier(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="150.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/PurchaseOrder.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnCustomer" layoutX="143.0" layoutY="343.0" mnemonicParsing="false" onAction="#btnCustomerOnAction" prefHeight="38.0" prefWidth="243.0" style="-fx-background-color: #000000;" text="Manage Customer" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="149.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/OfficeWorkerinaSuitFemale.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="143.0" layoutY="405.0" mnemonicParsing="false" onAction="#btnOrder1OnAction" prefHeight="38.0" prefWidth="243.0" style="-fx-background-color: #000000;" text="Manage Order " textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="156.0" layoutY="409.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/PurchaseOrder.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

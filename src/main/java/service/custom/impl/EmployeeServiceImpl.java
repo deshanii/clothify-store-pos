@@ -16,20 +16,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public boolean addEmployee(Employee employee) {
-        EmployeeDao employeeDao = DaoFactory.getDaoFactory().getDaoType(DaoType.EMPLOYEE);
+        EmployeeDao employeeDao = DaoFactory.getInstance().getDaoType(DaoType.EMPLOYEE);
         EmployeeEntity userEntity = new ObjectMapper().convertValue(employee, EmployeeEntity.class);
         return employeeDao.add(userEntity);
     }
 
     @Override
     public boolean deleteEmployee(String text) {
-        EmployeeDao employeeDao = DaoFactory.getDaoFactory().getDaoType(DaoType.EMPLOYEE);
+        EmployeeDao employeeDao = DaoFactory.getInstance().getDaoType(DaoType.EMPLOYEE);
         return employeeDao.delete(text);
     }
 
     @Override
     public boolean updateEmployee(Employee employee) {
-        EmployeeDao employeeDao = DaoFactory.getDaoFactory().getDaoType(DaoType.EMPLOYEE);
+        EmployeeDao employeeDao = DaoFactory.getInstance().getDaoType(DaoType.EMPLOYEE);
         EmployeeEntity employeeEntity = new ObjectMapper().convertValue(employee, EmployeeEntity.class);
 
         return employeeDao.update(employeeEntity);
@@ -39,7 +39,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee findEmployee(String id) {
-        EmployeeDao employeeDao = DaoFactory.getDaoFactory().getDaoType(DaoType.EMPLOYEE);
+        EmployeeDao employeeDao = DaoFactory.getInstance().getDaoType(DaoType.EMPLOYEE);
         EmployeeEntity employeeEntity = employeeDao.find(id);
 
         return new ObjectMapper().convertValue(employeeEntity,Employee.class);
@@ -48,7 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List getEmployee() {
-        EmployeeDao employeeDao = DaoFactory.getDaoFactory().getDaoType(DaoType.EMPLOYEE);
+        EmployeeDao employeeDao = DaoFactory.getInstance().getDaoType(DaoType.EMPLOYEE);
         List<EmployeeEntity> list = employeeDao.findAll();
         ObservableList<Employee> employeeList = FXCollections.observableArrayList();
         list.forEach(employeeEntity -> {

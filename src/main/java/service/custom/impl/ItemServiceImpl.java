@@ -2,10 +2,8 @@ package service.custom.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dao.DaoFactory;
-import dao.custom.EmployeeDao;
 import dao.custom.ItemDao;
 import dto.Item;
-import entity.EmployeeEntity;
 import entity.ItemEntity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +15,7 @@ import java.util.List;
 public class ItemServiceImpl implements ItemService {
     @Override
     public boolean addItem(Item item) {
-        ItemDao itemDao = DaoFactory.getDaoFactory().getDaoType(DaoType.ITEM);
+        ItemDao itemDao = DaoFactory.getInstance().getDaoType(DaoType.ITEM);
         ItemEntity userEntity = new ObjectMapper().convertValue(item, ItemEntity.class);
         return itemDao.add(userEntity);
 
@@ -25,13 +23,13 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public boolean deleteItem(String text) {
-        ItemDao itemDao = DaoFactory.getDaoFactory().getDaoType(DaoType.ITEM);
+        ItemDao itemDao = DaoFactory.getInstance().getDaoType(DaoType.ITEM);
         return itemDao.delete(text);
     }
 
     @Override
     public boolean updateItem(Item item) {
-        ItemDao itemDao = DaoFactory.getDaoFactory().getDaoType(DaoType.ITEM);
+        ItemDao itemDao = DaoFactory.getInstance().getDaoType(DaoType.ITEM);
         ItemEntity itemEntity = new ObjectMapper().convertValue(item, ItemEntity.class);
 
         return itemDao.update(itemEntity);
@@ -40,7 +38,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Item findItem(String id) {
-        ItemDao itemDao = DaoFactory.getDaoFactory().getDaoType(DaoType.ITEM);
+        ItemDao itemDao = DaoFactory.getInstance().getDaoType(DaoType.ITEM);
         ItemEntity itemEntity = itemDao.find(id);
 
         return new ObjectMapper().convertValue(itemEntity, Item.class);
@@ -49,7 +47,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List getItem() {
-        ItemDao itemDao = DaoFactory.getDaoFactory().getDaoType(DaoType.ITEM);
+        ItemDao itemDao = DaoFactory.getInstance().getDaoType(DaoType.ITEM);
         List<ItemEntity> list = itemDao.findAll();
         System.out.println(list);
         ObservableList<Item> itemList = FXCollections.observableArrayList();

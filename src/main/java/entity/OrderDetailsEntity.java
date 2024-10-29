@@ -13,6 +13,6 @@ import lombok.*;
 public class OrderDetailsEntity {
     @Id
     private String orderID;
-    private String oredrDate;
+    private String orderDate;
     private String custID;
 }

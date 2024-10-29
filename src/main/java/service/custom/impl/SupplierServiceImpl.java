@@ -2,10 +2,8 @@ package service.custom.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dao.DaoFactory;
-import dao.custom.CustomerDao;
 import dao.custom.SupplierDao;
 import dto.Supplier;
-import entity.CustomerEntity;
 import entity.SupplierEntity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,7 +16,7 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public boolean addSupplier(Supplier supplier) {
-        SupplierDao supplierDao = DaoFactory.getDaoFactory().getDaoType(DaoType.SUPPLIER);
+        SupplierDao supplierDao = DaoFactory.getInstance().getDaoType(DaoType.SUPPLIER);
         SupplierEntity userEntity = new ObjectMapper().convertValue(supplier, SupplierEntity.class);
         return supplierDao.add(userEntity);
     }
@@ -26,14 +24,14 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public boolean deleteSupplier(String text) {
-        SupplierDao supplierDao = DaoFactory.getDaoFactory().getDaoType(DaoType.SUPPLIER);
+        SupplierDao supplierDao = DaoFactory.getInstance().getDaoType(DaoType.SUPPLIER);
         return supplierDao.delete(text);
     }
 
 
     @Override
     public boolean updateSupplier(Supplier supplier) {
-        SupplierDao supplierDao = DaoFactory.getDaoFactory().getDaoType(DaoType.SUPPLIER);
+        SupplierDao supplierDao = DaoFactory.getInstance().getDaoType(DaoType.SUPPLIER);
         SupplierEntity supplierEntity = new ObjectMapper().convertValue(supplier, SupplierEntity.class);
 
         return supplierDao.update(supplierEntity);
@@ -43,7 +41,7 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public Supplier findSupplier(String name) {
-        SupplierDao supplierDao = DaoFactory.getDaoFactory().getDaoType(DaoType.SUPPLIER);
+        SupplierDao supplierDao = DaoFactory.getInstance().getDaoType(DaoType.SUPPLIER);
         SupplierEntity supplierEntity = supplierDao.find(name);
 
         return new ObjectMapper().convertValue(supplierEntity, Supplier.class);
@@ -53,7 +51,7 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public List getSupplier() {
-        SupplierDao supplierDao = DaoFactory.getDaoFactory().getDaoType(DaoType.SUPPLIER);
+        SupplierDao supplierDao = DaoFactory.getInstance().getDaoType(DaoType.SUPPLIER);
         List<SupplierEntity> list = supplierDao.findAll();
         ObservableList<Supplier> supplierList = FXCollections.observableArrayList();
         list.forEach(supplierEntity -> {

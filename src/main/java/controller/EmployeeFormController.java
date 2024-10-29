@@ -137,7 +137,7 @@ final EmployeeService employeeservice = new EmployeeServiceImpl();
     }
 
     public void loadTable(){
-tblEmployee.setItems(FXCollections.observableArrayList(employeeservice.getEmployee()));
+        tblEmployee.setItems(FXCollections.observableArrayList(employeeservice.getEmployee()));
 
     }
 
@@ -177,7 +177,7 @@ tblEmployee.setItems(FXCollections.observableArrayList(employeeservice.getEmploy
 
     @FXML
     void btnBackOnAction(ActionEvent event) throws IOException {
-        URL resource = this.getClass().getResource("../../view/dash_board_form.fxml");
+        URL resource = this.getClass().getResource("../../view/user_dash_board_form.fxml");
 
         assert resource != null;
 

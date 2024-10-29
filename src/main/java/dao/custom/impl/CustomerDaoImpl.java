@@ -2,7 +2,6 @@ package dao.custom.impl;
 
 import dao.custom.CustomerDao;
 import entity.CustomerEntity;
-import entity.EmployeeEntity;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import util.HibernateUtil;

@@ -1,9 +1,6 @@
 package dao;
 
-
 import dao.custom.impl.*;
-
-import static util.DaoType.*;
 
 public class DaoFactory {
     private static DaoFactory daoFactory;
@@ -11,7 +8,7 @@ public class DaoFactory {
 
     }
 
-    public static DaoFactory getDaoFactory(){
+    public static DaoFactory getInstance(){
         return daoFactory!=null?daoFactory:(daoFactory=new DaoFactory());
     }
 
@@ -22,7 +19,7 @@ public class DaoFactory {
             case EMPLOYEE:return (T) new EmployeeDaoImpl();
             case SUPPLIER:return (T) new SupplierDaoImpl();
             case CUSTOMER:return (T) new CustomerDaoImpl();
-           // case ORDER:return (T) new OrderDaoImpl();
+            case ORDER:return (T) new OrderDaoImpl();
             case ORDERDETAILS:return (T) new OrderDetailsDaoImpl();
             default:return null;
         }

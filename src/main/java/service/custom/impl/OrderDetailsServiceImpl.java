@@ -2,11 +2,8 @@ package service.custom.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dao.DaoFactory;
-import dao.custom.EmployeeDao;
 import dao.custom.OrderDetailsDao;
-import dto.Employee;
 import dto.OrderDetails;
-import entity.EmployeeEntity;
 import entity.OrderDetailsEntity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,22 +13,22 @@ import util.DaoType;
 import java.util.List;
 
 public class OrderDetailsServiceImpl implements OrderDetailsService {
-    @Override
-    public boolean addOrderDetails(OrderDetails orderDetails) {
-        OrderDetailsDao orderDetailsDao = DaoFactory.getDaoFactory().getDaoType(DaoType.ORDERDETAILS);
-        OrderDetailsEntity userEntity = new ObjectMapper().convertValue(orderDetails, OrderDetailsEntity.class);
-        return orderDetailsDao.add(userEntity);
-    }
+//    @Override
+//    public boolean addOrderDetails(OrderDetails orderDetails) {
+//        OrderDetailsDao orderDetailsDao = DaoFactory.getInstance().getDaoType(DaoType.ORDERDETAILS);
+//        OrderDetailsEntity userEntity = new ObjectMapper().convertValue(orderDetails, OrderDetailsEntity.class);
+//        return orderDetailsDao.add(userEntity);
+//    }
 
     @Override
     public boolean deleteOrderDetails(String text) {
-        OrderDetailsDao orderDetailsDao = DaoFactory.getDaoFactory().getDaoType(DaoType.ORDERDETAILS);
+        OrderDetailsDao orderDetailsDao = DaoFactory.getInstance().getDaoType(DaoType.ORDERDETAILS);
         return orderDetailsDao.delete(text);
     }
 
     @Override
     public boolean updateOrderDetails(OrderDetails orderDetails) {
-        OrderDetailsDao orderDetailsDao = DaoFactory.getDaoFactory().getDaoType(DaoType.ORDERDETAILS);
+        OrderDetailsDao orderDetailsDao = DaoFactory.getInstance().getDaoType(DaoType.ORDERDETAILS);
         OrderDetailsEntity orderDetailsEntity = new ObjectMapper().convertValue(orderDetails, OrderDetailsEntity.class);
 
         return orderDetailsDao.update(orderDetailsEntity);
@@ -39,7 +36,7 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
 
     @Override
     public OrderDetails findOrderDetails(String id) {
-        OrderDetailsDao orderDetailsDao = DaoFactory.getDaoFactory().getDaoType(DaoType.ORDERDETAILS);
+        OrderDetailsDao orderDetailsDao = DaoFactory.getInstance().getDaoType(DaoType.ORDERDETAILS);
         OrderDetailsEntity orderDetailsEntity = orderDetailsDao.find(id);
 
         return new ObjectMapper().convertValue(orderDetailsEntity,OrderDetails.class);
@@ -47,7 +44,7 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
 
     @Override
     public List getOrderDetails() {
-        OrderDetailsDao orderDetailsDao = DaoFactory.getDaoFactory().getDaoType(DaoType.ORDERDETAILS);
+        OrderDetailsDao orderDetailsDao = DaoFactory.getInstance().getDaoType(DaoType.ORDERDETAILS);
         List<OrderDetailsEntity> list = orderDetailsDao.findAll();
         ObservableList<OrderDetails> orderDetailsList = FXCollections.observableArrayList();
         list.forEach(orderDetailsEntity -> {

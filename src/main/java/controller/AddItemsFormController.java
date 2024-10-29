@@ -134,7 +134,7 @@ public class AddItemsFormController implements Initializable {
             System.out.println("hi");
             Stage stage = new Stage();
             stage.setScene(new Scene(
-                    FXMLLoader.load(getClass().getResource("../view/dash_board_form.fxml"))));
+                    FXMLLoader.load(getClass().getResource("../view/user_dash_board_form.fxml"))));
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -219,7 +219,7 @@ public class AddItemsFormController implements Initializable {
         colSupID.setCellValueFactory(new PropertyValueFactory<>("supplierID"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colPackSize.setCellValueFactory(new PropertyValueFactory<>("packSize"));
-        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitePrice"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colQtyOnHandsss.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
 
 

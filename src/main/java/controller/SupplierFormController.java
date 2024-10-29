@@ -2,22 +2,18 @@ package controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import dto.Customer;
 import dto.Supplier;
-import entity.SupplierEntity;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import service.custom.SupplierService;
 import service.custom.impl.SupplierServiceImpl;
@@ -120,7 +116,7 @@ public class SupplierFormController implements Initializable {
         try {
             Stage stage = new Stage();
             stage.setScene(new Scene(
-                    FXMLLoader.load(getClass().getResource("../../resources/view/dash_board_form.fxml"))));
+                    FXMLLoader.load(getClass().getResource("../../resources/view/user_dash_board_form.fxml"))));
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);

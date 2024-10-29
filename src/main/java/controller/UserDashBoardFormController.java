@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class DashBoardFormController {
+public class UserDashBoardFormController {
 
     @FXML
     private Button btnEmployee;
@@ -27,7 +27,6 @@ public class DashBoardFormController {
     void btnEmployeeOnAction(ActionEvent event) {
 
         try {
-            System.out.println("hi");
             Stage stage = new Stage();
             stage.setScene(new Scene(
                     FXMLLoader.load(getClass().getResource("../view/employee_form.fxml"))));
@@ -52,7 +51,14 @@ public class DashBoardFormController {
 
     @FXML
     void btnOrderOnAction(ActionEvent event) {
-
+        try {
+            Stage stage = new Stage();
+            stage.setScene(new Scene(
+                    FXMLLoader.load(getClass().getResource("../view/order_details_form.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -66,6 +72,30 @@ public class DashBoardFormController {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public void btnCustomerOnAction(ActionEvent actionEvent) {
+        try {
+            Stage stage = new Stage();
+            stage.setScene(new Scene(
+                    FXMLLoader.load(getClass().getResource("../view/customer_form.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void btnOrder1OnAction(ActionEvent actionEvent) {
+        System.out.println("Start");
+        try {
+            Stage stage = new Stage();
+            stage.setScene(new Scene(
+                    FXMLLoader.load(getClass().getResource("../view/order_form.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("End");
     }
 
 }
