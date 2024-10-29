@@ -13,12 +13,16 @@ import util.DaoType;
 import java.util.List;
 
 public class OrderDetailsServiceImpl implements OrderDetailsService {
-//    @Override
-//    public boolean addOrderDetails(OrderDetails orderDetails) {
-//        OrderDetailsDao orderDetailsDao = DaoFactory.getInstance().getDaoType(DaoType.ORDERDETAILS);
-//        OrderDetailsEntity userEntity = new ObjectMapper().convertValue(orderDetails, OrderDetailsEntity.class);
-//        return orderDetailsDao.add(userEntity);
-//    }
+    @Override
+    public boolean addOrderDetails(OrderDetails orderDetails) {
+        OrderDetailsDao orderDetailsDao = DaoFactory.getInstance().getDaoType(DaoType.ORDERDETAILS);
+        OrderDetailsEntity userEntity = new OrderDetailsEntity(
+                orderDetails.getOrderID(),
+                orderDetails.getOrderDate(),
+                orderDetails.getCustID()
+        );
+        return orderDetailsDao.add(userEntity);
+    }
 
     @Override
     public boolean deleteOrderDetails(String text) {
@@ -29,9 +33,13 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     @Override
     public boolean updateOrderDetails(OrderDetails orderDetails) {
         OrderDetailsDao orderDetailsDao = DaoFactory.getInstance().getDaoType(DaoType.ORDERDETAILS);
-        OrderDetailsEntity orderDetailsEntity = new ObjectMapper().convertValue(orderDetails, OrderDetailsEntity.class);
+        OrderDetailsEntity userEntity = new OrderDetailsEntity(
+                orderDetails.getOrderID(),
+                orderDetails.getOrderDate(),
+                orderDetails.getCustID()
+        );
 
-        return orderDetailsDao.update(orderDetailsEntity);
+        return orderDetailsDao.update(userEntity);
     }
 
     @Override
@@ -39,7 +47,7 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
         OrderDetailsDao orderDetailsDao = DaoFactory.getInstance().getDaoType(DaoType.ORDERDETAILS);
         OrderDetailsEntity orderDetailsEntity = orderDetailsDao.find(id);
 
-        return new ObjectMapper().convertValue(orderDetailsEntity,OrderDetails.class);
+        return new OrderDetails(orderDetailsEntity.getOrderID(),orderDetailsEntity.getOrderDate(), orderDetailsEntity.getCustID());
     }
 
     @Override
@@ -48,7 +56,11 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
         List<OrderDetailsEntity> list = orderDetailsDao.findAll();
         ObservableList<OrderDetails> orderDetailsList = FXCollections.observableArrayList();
         list.forEach(orderDetailsEntity -> {
-            orderDetailsList.add(new ObjectMapper().convertValue(orderDetailsEntity,OrderDetails.class));
+            orderDetailsList.add(new OrderDetails(
+                    orderDetailsEntity.getOrderID(),
+                    orderDetailsEntity.getOrderDate(),
+                    orderDetailsEntity.getCustID()
+            ));
         });
         return orderDetailsList;
     }

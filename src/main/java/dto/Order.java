@@ -17,10 +17,10 @@ public class Order {
     private String orderID;
     private String custID;
     private String itemCode;
-//    private String custName;
     private String description;
     private String unitPrice;
     private String qty;
-//    private String stock;
+    private String total;
+
 
 }

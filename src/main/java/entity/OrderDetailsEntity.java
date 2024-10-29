@@ -5,14 +5,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @NoArgsConstructor
-@Setter
-@Getter
+@AllArgsConstructor
+@Data
 @Entity(name ="orderDetails")
 @Table(name ="orderDetails")
 public class OrderDetailsEntity {
     @Id
     private String orderID;
-    private String orderDate;
+    private LocalDate orderDate;
     private String custID;
 }

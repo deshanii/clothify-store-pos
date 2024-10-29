@@ -40,7 +40,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List getOrder() {
+    public List<Order> getOrder() {
         OrderDao orderDao = DaoFactory.getInstance().getDaoType(DaoType.ORDER);
         List<OrderEntity> list = orderDao.findAll();
         System.out.println(list);

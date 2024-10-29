@@ -67,7 +67,7 @@ public class OrderDetailsFormController implements Initializable {
 
     public void setValues(OrderDetails newValue){
         txtOrderID.setText(newValue.getOrderID());
-        LocalDate initialDate =LocalDate.parse(newValue.getOrderDate());
+        LocalDate initialDate = newValue.getOrderDate();
         dOrderDate.setValue(initialDate);
         txtCustID.setText(newValue.getCustID());
 
@@ -142,7 +142,7 @@ public class OrderDetailsFormController implements Initializable {
 
         OrderDetails orderDetails = new OrderDetails(
                 txtOrderID.getText(),
-                dOrderDate.getValue().toString(),
+                dOrderDate.getValue(),
                 txtCustID.getText()
         );
 

@@ -1,5 +1,6 @@
 package controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import dto.*;
@@ -15,12 +16,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import service.custom.CustomerService;
-import service.custom.EmployeeService;
 import service.custom.ItemService;
+import service.custom.OrderDetailsService;
 import service.custom.OrderService;
 import service.custom.impl.CustomerServiceImpl;
-import service.custom.impl.EmployeeServiceImpl;
 import service.custom.impl.ItemServiceImpl;
+import service.custom.impl.OrderDetailsServiceImpl;
 import service.custom.impl.OrderServiceImpl;
 
 import java.net.URL;
@@ -89,7 +90,7 @@ public class OrderFormController implements Initializable {
     private Label lblTotal;
 
     @FXML
-    private TableView<Order> tblOrders;
+    private TableView<CartTM> tblOrders;
 
     @FXML
     private JFXTextField txtCustomerName;
@@ -115,33 +116,38 @@ public class OrderFormController implements Initializable {
 
 
     final OrderService orderService = new OrderServiceImpl();
+    final OrderDetailsService orderdetailsservice = new OrderDetailsServiceImpl();
     ObservableList<CartTM> cartTMS = FXCollections.observableArrayList();
+    List<Order> orderlist = new ArrayList<>();
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
+        double placetotal = Double.parseDouble(txtUnitPrice.getText())*Integer.parseInt(txtQty.getText());
+        Order order = new Order(
+                txtOrderID.getText(),
+                cmbCustomerID.getSelectionModel().getSelectedItem().toString(),
+                cmbItemCode.getSelectionModel().getSelectedItem().toString(),
+                txtDescription.getText(),
+                txtUnitPrice.getText(),
+                txtQty.getText(),
+                placetotal+""
+        );
+        orderlist.add(order);
 
-//        Order order = new Order(
-//                txtOrderID.getText(),
-//                cmbCustomerID.getSelectionModel().getSelectedItem().toString(),
-//                cmbItemCode.getSelectionModel().getSelectedItem().toString(),
-//                txtDescription.getText(),
-//                txtUnitPrice.getText(),
-//                txtQty.getText()
-//        );
-//
-//        try{
-//            boolean isAdd = orderService.addOrder(order);
-//            if (isAdd){
-//                new Alert(Alert.AlertType.INFORMATION,"Order Added Successfully !").show();
-//                loadTable();
-//            }else{
-//                new Alert(Alert.AlertType.ERROR,"Something went wrong !").show();
-//            }
-//        }catch (Exception e) {
-//            new Alert(Alert.AlertType.ERROR, "Error: " + e.getMessage()).show();
-//        }
-//
-//        clearText();
+        try{
+            boolean isAdd = orderService.addOrder(order);
+            if (isAdd){
+                new Alert(Alert.AlertType.INFORMATION,"Order Added Successfully !").show();
+                loadTable();
+                lblTotal.setText((Double.parseDouble(lblTotal.getText())+placetotal)+"");
+            }else{
+                new Alert(Alert.AlertType.ERROR,"Something went wrong !").show();
+            }
+        }catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "Error: " + e.getMessage()).show();
+        }
+
+        clearText();
 
 
         colOrderID.setCellValueFactory(new PropertyValueFactory<>("orderID"));
@@ -163,12 +169,11 @@ public class OrderFormController implements Initializable {
         if (Integer.parseInt(txtStock.getText())<qty){
             new Alert(Alert.AlertType.WARNING,"Invalid QTY").show();
         }else{
-            cartTMS.add(new CartTM(orderID,custID,itemCode,description,unitPrice,qty,total));
+            cartTMS.add(new CartTM(orderID,custID,itemCode,description,unitPrice.toString(),qty.toString(),total.toString()));
             calcNetTotal();
         }
 
-
-//        tblOrders.setItems(cartTMS);
+        tblOrders.setItems(cartTMS);
 
     }
 
@@ -204,13 +209,15 @@ public class OrderFormController implements Initializable {
                 cmbItemCode.getSelectionModel().getSelectedItem().toString(),
                 txtDescription.getText(),
                 txtUnitPrice.getText(),
-                txtQty.getText()
+                txtQty.getText(),
+                lblTotal.getText()
         );
 
         try {
             boolean isUpdate = orderService.updateOrder(order);
             if(isUpdate){
                 new Alert(Alert.AlertType.INFORMATION,"Order Updated Successfully !").show();
+
                 loadTable();
             }else {
                 new Alert(Alert.AlertType.ERROR,"Something went wrong !").show();
@@ -223,15 +230,11 @@ public class OrderFormController implements Initializable {
 
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) {
-        String orderID = txtOrderID.getText();
+
         LocalDate orderDate = LocalDate.now();
-        String custID = cmbCustomerID.getValue();
-
-        List<OrderDetails> orderDetails = new ArrayList<>();
-
-        cartTMS.forEach(obj ->{
-            orderDetails.add(new OrderDetails(orderID,obj.getItemCode(),obj.getQty()));
-        });
+        for (Order order : orderlist) {
+        orderdetailsservice.addOrderDetails(new OrderDetails(order.getOrderID(),orderDate,order.getCustID()));
+        }
 
     }
 
@@ -263,7 +266,7 @@ public class OrderFormController implements Initializable {
         });
     }
 
-    private void setValues(Order newValue){
+    private void setValues(CartTM newValue){
         txtOrderID.setText(newValue.getOrderID());
         cmbCustomerID.getSelectionModel().select(Integer.parseInt(newValue.getCustID()));
         cmbItemCode.getSelectionModel().select(Integer.parseInt(newValue.getItemCode()));
@@ -275,8 +278,20 @@ public class OrderFormController implements Initializable {
     }
 
     public void loadTable(){
-
-        tblOrders.setItems(FXCollections.observableArrayList(orderService.getOrder()));
+        List<Order> orderlist = orderService.getOrder();
+        List<CartTM> cart = new ArrayList<>();
+        for (Order order : orderlist) {
+            cart.add(new CartTM(
+                    order.getOrderID(),
+                    order.getCustID(),
+                    order.getItemCode(),
+                    order.getDescription(),
+                    order.getUnitPrice(),
+                    order.getQty(),
+                    order.getTotal()
+            ));
+        }
+        tblOrders.setItems(FXCollections.observableArrayList(cart));
     }
 
     public void clearText(){
@@ -284,8 +299,6 @@ public class OrderFormController implements Initializable {
         txtDescription.setText("");
         txtUnitPrice.setText("");
         txtOrderID.setText("");
-        txtCustomerName.setText("");
-        txtStock.setText("");
         cmbItemCode.setValue(null);
         cmbCustomerID.setValue(null);
     }
@@ -333,7 +346,7 @@ public class OrderFormController implements Initializable {
     private void calcNetTotal() {
         Double total=0.0;
         for (CartTM cartTM: cartTMS){
-            total+=cartTM.getTotal();
+            total+=Double.parseDouble(cartTM.getTotal());
         }
         lblTotal.setText(total.toString()+"/=");
     }

@@ -1,24 +1,16 @@
 package dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 @ToString
 public class CartTM {
     private String orderID;
     private String custID;
     private String itemCode;
-    private String custName;
     private String description;
     private String unitPrice;
     private String qty;
-    private Double total;
-
-    public CartTM(String orderID, String custID, String itemCode, String description, Double unitPrice, Integer qty, Double total) {
-    }
+    private String total;
 }

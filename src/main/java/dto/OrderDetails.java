@@ -2,13 +2,15 @@ package dto;
 
 import lombok.*;
 
+import java.time.LocalDate;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @Data
 public class OrderDetails {
     private String orderID;
-    private String orderDate;
+    private LocalDate orderDate;
     private String custID;
 
 }
